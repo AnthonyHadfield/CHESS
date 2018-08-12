@@ -1,20 +1,130 @@
-import tkinter as tk
-import numpy as np
-import time
+from tkinter import *
 
-class chessworld:
+
+class ChessWorld:
 
     def __init__(self):
-        self.root = tk
-        self.frame = self.root.Canvas(bg='dark goldenrod', height=760, width=760)
+
+        self.root = Tk()
+        """WINDOW center"""
+        self.root.geometry("780x780+535+30")
+        self.root.title('CHESS BOARD'.center(200))
+
+        self.frame = Canvas(bg='dark goldenrod', width=760, height=760)
         self.frame.pack()
+        self.rook1_b = ()
+        self.rook1_w = ()
+        self.rook2_b = ()
+        self.rook2_w = ()
+        self.knight1_w = ()
+        self.knight1_b = ()
+        self.knight2_w = ()
+        self.knight2_b = ()
+        self.bishop1_w = ()
+        self.bishop1_b = ()
+        self.bishop2_w = ()
+        self.bishop2_b = ()
+        self.queen_w = ()
+        self.queen_b = ()
+        self.king_w = ()
+        self.king_b = ()
+        self.pawn1_w = ()
+        self.pawn2_w = ()
+        self.pawn3_w = ()
+        self.pawn4_w = ()
+        self.pawn5_w = ()
+        self.pawn6_w = ()
+        self.pawn7_w = ()
+        self.pawn8_w = ()
+        self.pawn1_b = ()
+        self.pawn2_b = ()
+        self.pawn3_b = ()
+        self.pawn4_b = ()
+        self.pawn5_b = ()
+        self.pawn6_b = ()
+        self.pawn7_b = ()
+        self.pawn8_b = ()
+
+    def pieces(self):
+
+        """off sets"""
+        a2 = 90
+        b2 = 88
+        """black pieces"""
+        self.rook1_b = PhotoImage(file='C:/Users/user/PycharmProjects/CHESS/PIECES/rook1_b.png')
+        self.frame.create_image(34, 30, anchor=NW, image=self.rook1_b)
+        self.knight1_b = PhotoImage(file='C:/Users/user/PycharmProjects/CHESS/PIECES/knight1_b.png')
+        self.frame.create_image(34 + a2, 30, anchor=NW, image=self.knight1_b)
+        self.bishop1_b = PhotoImage(file='C:/Users/user/PycharmProjects/CHESS/PIECES/bishop1_b.png')
+        self.frame.create_image(34 + 2 * a2, 30, anchor=NW, image=self.bishop1_b)
+        self.queen_b = PhotoImage(file='C:/Users/user/PycharmProjects/CHESS/PIECES/queen_b.png')
+        self.frame.create_image(34 + 3 * a2, 30, anchor=NW, image=self.queen_b)
+        self.king_b = PhotoImage(file='C:/Users/user/PycharmProjects/CHESS/PIECES/king_b.png')
+        self.frame.create_image(34 + 4 * a2, 30, anchor=NW, image=self.king_b)
+        self.bishop2_b = PhotoImage(file='C:/Users/user/PycharmProjects/CHESS/PIECES/bishop2_b.png')
+        self.frame.create_image(34 + 5 * a2, 30, anchor=NW, image=self.bishop2_b)
+        self.knight2_b = PhotoImage(file='C:/Users/user/PycharmProjects/CHESS/PIECES/knight2_b.png')
+        self.frame.create_image(34 + 6 * a2, 30, anchor=NW, image=self.knight2_b)
+        self.rook2_b = PhotoImage(file='C:/Users/user/PycharmProjects/CHESS/PIECES/rook2_b.png')
+        self.frame.create_image(34 + 7 * a2, 30, anchor=NW, image=self.rook2_b)
+        self.pawn1_b = PhotoImage(file='C:/Users/user/PycharmProjects/CHESS/PIECES/pawn1_b.png')
+        self.frame.create_image(34, 30 + b2, anchor=NW, image=self.pawn1_b)
+        self.pawn2_b = PhotoImage(file='C:/Users/user/PycharmProjects/CHESS/PIECES/pawn2_b.png')
+        self.frame.create_image(34 + a2, 30 + b2, anchor=NW, image=self.pawn2_b)
+        self.pawn3_b = PhotoImage(file='C:/Users/user/PycharmProjects/CHESS/PIECES/pawn3_b.png')
+        self.frame.create_image(34 + 2 * a2, 30 + b2, anchor=NW, image=self.pawn3_b)
+        self.pawn4_b = PhotoImage(file='C:/Users/user/PycharmProjects/CHESS/PIECES/pawn4_b.png')
+        self.frame.create_image(34 + 3 * a2, 30 + b2, anchor=NW, image=self.pawn4_b)
+        self.pawn5_b = PhotoImage(file='C:/Users/user/PycharmProjects/CHESS/PIECES/pawn5_b.png')
+        self.frame.create_image(34 + 4 * a2, 30 + b2, anchor=NW, image=self.pawn5_b)
+        self.pawn6_b = PhotoImage(file='C:/Users/user/PycharmProjects/CHESS/PIECES/pawn6_b.png')
+        self.frame.create_image(34 + 5 * a2, 30 + b2, anchor=NW, image=self.pawn6_b)
+        self.pawn7_b = PhotoImage(file='C:/Users/user/PycharmProjects/CHESS/PIECES/pawn7_b.png')
+        self.frame.create_image(34 + 6 * a2, 30 + b2, anchor=NW, image=self.pawn7_b)
+        self.pawn8_b = PhotoImage(file='C:/Users/user/PycharmProjects/CHESS/PIECES/pawn8_b.png')
+        self.frame.create_image(34 + 7 * a2, 30 + b2, anchor=NW, image=self.pawn8_b)
+
+        """white pieces"""
+        self.rook1_w = PhotoImage(file='C:/Users/user/PycharmProjects/CHESS/PIECES/rook1_w.png')
+        self.frame.create_image(34, 30 + 7 * b2, anchor=NW, image=self.rook1_w)
+        self.knight1_w = PhotoImage(file='C:/Users/user/PycharmProjects/CHESS/PIECES/knight1_w.png')
+        self.frame.create_image(34 + a2, 30 + 7 * b2, anchor=NW, image=self.knight1_w)
+        self.bishop1_w = PhotoImage(file='C:/Users/user/PycharmProjects/CHESS/PIECES/bishop1_w.png')
+        self.frame.create_image(34 + 2 * a2, 30 + 7 * b2, anchor=NW, image=self.bishop1_w)
+        self.queen_w = PhotoImage(file='C:/Users/user/PycharmProjects/CHESS/PIECES/queen_w.png')
+        self.frame.create_image(34 + 3 * a2, 30 + 7 * b2, anchor=NW, image=self.queen_w)
+        self.king_w = PhotoImage(file='C:/Users/user/PycharmProjects/CHESS/PIECES/king_w.png')
+        self.frame.create_image(34 + 4 * a2, 30 + 7 * b2, anchor=NW, image=self.king_w)
+        self.bishop2_w = PhotoImage(file='C:/Users/user/PycharmProjects/CHESS/PIECES/bishop2_w.png')
+        self.frame.create_image(34 + 5 * a2, 30 + 7 * b2, anchor=NW, image=self.bishop2_w)
+        self.knight2_w = PhotoImage(file='C:/Users/user/PycharmProjects/CHESS/PIECES/knight2_w.png')
+        self.frame.create_image(34 + 6 * a2, 30 + 7 * b2, anchor=NW, image=self.knight2_w)
+        self.rook2_w = PhotoImage(file='C:/Users/user/PycharmProjects/CHESS/PIECES/rook2_w.png')
+        self.frame.create_image(34 + 7 * a2, 30 + 7 * b2, anchor=NW, image=self.rook2_w)
+        self.pawn1_w = PhotoImage(file='C:/Users/user/PycharmProjects/CHESS/PIECES/pawn1_w.png')
+        self.frame.create_image(34, 30 + 6 * b2, anchor=NW, image=self.pawn1_w)
+        self.pawn2_w = PhotoImage(file='C:/Users/user/PycharmProjects/CHESS/PIECES/pawn2_w.png')
+        self.frame.create_image(34 + a2, 30 + 6 * b2, anchor=NW, image=self.pawn2_w)
+        self.pawn3_w = PhotoImage(file='C:/Users/user/PycharmProjects/CHESS/PIECES/pawn3_w.png')
+        self.frame.create_image(34 + 2 * a2, 30 + 6 * b2, anchor=NW, image=self.pawn3_w)
+        self.pawn4_w = PhotoImage(file='C:/Users/user/PycharmProjects/CHESS/PIECES/pawn4_w.png')
+        self.frame.create_image(34 + 3 * a2, 30 + 6 * b2, anchor=NW, image=self.pawn4_w)
+        self.pawn5_w = PhotoImage(file='C:/Users/user/PycharmProjects/CHESS/PIECES/pawn5_w.png')
+        self.frame.create_image(34 + 4 * a2, 30 + 6 * b2, anchor=NW, image=self.pawn5_w)
+        self.pawn6_w = PhotoImage(file='C:/Users/user/PycharmProjects/CHESS/PIECES/pawn6_w.png')
+        self.frame.create_image(34 + 5 * a2, 30 + 6 * b2, anchor=NW, image=self.pawn6_w)
+        self.pawn7_w = PhotoImage(file='C:/Users/user/PycharmProjects/CHESS/PIECES/pawn7_w.png')
+        self.frame.create_image(34 + 6 * a2, 30 + 6 * b2, anchor=NW, image=self.pawn7_w)
+        self.pawn8_w = PhotoImage(file='C:/Users/user/PycharmProjects/CHESS/PIECES/pawn8_w.png')
+        self.frame.create_image(34 + 7 * a2, 30 + 6 * b2, anchor=NW, image=self.pawn8_w)
+
+        # self.root.mainloop()
 
     def board(self):
         """frame"""
         """off sets"""
-        x1 = 90; x2 = 180; x3 = 270; x4 = 360; x5 = 450; x6 = 540; x7 = 630; x8 = 720
-        y1 = 88; y2 = 176; y3 = 264; y4 = 352; y5 = 440; y6 = 528; y7 = 616; y8= 702
-
+        x1 = 90; x2 = 180; x3 = 270; x4 = 360; x5 = 450; x6 = 540; x7 = 630
+        y1 = 88
         self.frame.create_rectangle(22, 22, 670, 670, fill='lime green')
         """row 8"""
         self.frame.create_rectangle(20, 17, 110, 105, fill='light yellow')
@@ -89,9 +199,12 @@ class chessworld:
         self.frame.create_rectangle(20 + x6, 17 + 7 * y1, 110 + x6, 105 + 7 * y1, fill='darkolivegreen4')
         self.frame.create_rectangle(20 + x7, 17 + 7 * y1, 110 + x7, 105 + 7 * y1, fill='light yellow')
 
+        self.pieces()
+
+        # self.frame.update()
+
         self.root.mainloop()
 
-
-data = chessworld()
+data = ChessWorld()
 
 data.board()
