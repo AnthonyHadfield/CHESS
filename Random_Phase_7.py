@@ -1,4 +1,3 @@
-
 from tkinter import *
 import numpy as np
 import time
@@ -14,7 +13,9 @@ class ChessWorld:
         self.frame = Canvas(bg='dark goldenrod', width=760, height=745)
         self.frame.pack()
         """declarations"""
-        self.bc = (); self.bp = (); self.mp = ()
+        self.bc = ();
+        self.bp = ();
+        self.mp = ()
         self.move = ()
         self.move_white_agent = []
         self.move_black_agent = []
@@ -46,75 +47,180 @@ class ChessWorld:
         # self.root.mainloop()
 
     def pieces(self):
-        #self.start_white_pieces = ['Pw1', 'Pw2', 'Pw3', 'Pw4', 'Pw5', 'Pw6', 'Pw7', 'Pw8', 'Rw1', 'Ktw1', 'Bw1', 'Qw'
-         #                          'Kw', 'Bw2', 'Ktw2', 'Rw2']
-        #self.start_white_pieces = ['Pw1', 'Pw2', 'Pw3', 'Pw4', 'Pw5', 'Pw6', 'Pw7', 'Pw8', 'Ktw1', 'Ktw2']
+        # self.start_white_pieces = ['Pw1', 'Pw2', 'Pw3', 'Pw4', 'Pw5', 'Pw6', 'Pw7', 'Pw8', 'Rw1', 'Ktw1', 'Bw1', 'Qw'
+        #                          'Kw', 'Bw2', 'Ktw2', 'Rw2']
+        # self.start_white_pieces = ['Pw1', 'Pw2', 'Pw3', 'Pw4', 'Pw5', 'Pw6', 'Pw7', 'Pw8', 'Ktw1', 'Ktw2']
         self.start_white_pieces = ['Pw1', 'Pw2', 'Pw3', 'Pw4', 'Pw5', 'Pw6', 'Pw7', 'Pw8', 'Rw1', 'Ktw1', 'Bw1',
                                    'Qw1', 'Bw2', 'Ktw2', 'Rw2']
-        #self.start_black_pieces = ['Pb1', 'Pb2', 'Pb3', 'Pb4', 'Pb5', 'Pb6', 'Pb7', 'Pb8', 'Rb1', 'Ktb1', 'Bb1', 'Qb'
-         #                          'Kb', 'Bb2', 'Ktb2', 'Rb2']
+        # self.start_black_pieces = ['Pb1', 'Pb2', 'Pb3', 'Pb4', 'Pb5', 'Pb6', 'Pb7', 'Pb8', 'Rb1', 'Ktb1', 'Bb1', 'Qb'
+        #                          'Kb', 'Bb2', 'Ktb2', 'Rb2']
         self.start_black_pieces = ['Pb1', 'Pb2', 'Pb3', 'Pb4', 'Pb5', 'Pb6', 'Pb7', 'Pb8', 'Rb1', 'Ktb1', 'Bb1',
                                    'Qb1', 'Bb2', 'Ktb2', 'Rb2']
+
     def board_data(self):
-        x = 8; y = 8
+        x = 8;
+        y = 8
         """bc = board_coordinates"""
         self.bc = np.zeros([x, y], dtype=np.object)
         """row 8 coordinates"""
-        self.bc[0][0] = (34, 30); self.bc[0][1] = (124, 30); self.bc[0][2] = (214, 30); self.bc[0][3] = (304, 30)
-        self.bc[0][4] = (394, 30); self.bc[0][5] = (484, 30); self.bc[0][6] = (574, 30); self.bc[0][7] = (664, 30)
+        self.bc[0][0] = (34, 30);
+        self.bc[0][1] = (124, 30);
+        self.bc[0][2] = (214, 30);
+        self.bc[0][3] = (304, 30)
+        self.bc[0][4] = (394, 30);
+        self.bc[0][5] = (484, 30);
+        self.bc[0][6] = (574, 30);
+        self.bc[0][7] = (664, 30)
         """row 7 coordinates"""
-        self.bc[1][0] = (34, 118); self.bc[1][1] = (124, 118); self.bc[1][2] = (214, 118); self.bc[1][3] = (304, 118)
-        self.bc[1][4] = (394, 118); self.bc[1][5] = (484, 118); self.bc[1][6] = (574, 118); self.bc[1][7] = (664, 118)
+        self.bc[1][0] = (34, 118);
+        self.bc[1][1] = (124, 118);
+        self.bc[1][2] = (214, 118);
+        self.bc[1][3] = (304, 118)
+        self.bc[1][4] = (394, 118);
+        self.bc[1][5] = (484, 118);
+        self.bc[1][6] = (574, 118);
+        self.bc[1][7] = (664, 118)
         """row 6 coordinates"""
-        self.bc[2][0] = (34, 206); self.bc[2][1] = (124, 206); self.bc[2][2] = (214, 206); self.bc[2][3] = (304, 206)
-        self.bc[2][4] = (394, 206); self.bc[2][5] = (484, 206); self.bc[2][6] = (574, 206); self.bc[2][7] = (664, 206)
+        self.bc[2][0] = (34, 206);
+        self.bc[2][1] = (124, 206);
+        self.bc[2][2] = (214, 206);
+        self.bc[2][3] = (304, 206)
+        self.bc[2][4] = (394, 206);
+        self.bc[2][5] = (484, 206);
+        self.bc[2][6] = (574, 206);
+        self.bc[2][7] = (664, 206)
         """row 5 coordinates"""
-        self.bc[3][0] = (34, 294); self.bc[3][1] = (124, 294); self.bc[3][2] = (214, 294); self.bc[3][3] = (304, 294)
-        self.bc[3][4] = (394, 294); self.bc[3][5] = (484, 294); self.bc[3][6] = (574, 294); self.bc[3][7] = (664, 294)
+        self.bc[3][0] = (34, 294);
+        self.bc[3][1] = (124, 294);
+        self.bc[3][2] = (214, 294);
+        self.bc[3][3] = (304, 294)
+        self.bc[3][4] = (394, 294);
+        self.bc[3][5] = (484, 294);
+        self.bc[3][6] = (574, 294);
+        self.bc[3][7] = (664, 294)
         """row 4 coordinates"""
-        self.bc[4][0] = (34, 382); self.bc[4][1] = (124, 382); self.bc[4][2] = (214, 382); self.bc[4][3] = (304, 382)
-        self.bc[4][4] = (394, 382); self.bc[4][5] = (484, 382); self.bc[4][6] = (574, 382); self.bc[4][7] = (664, 382)
+        self.bc[4][0] = (34, 382);
+        self.bc[4][1] = (124, 382);
+        self.bc[4][2] = (214, 382);
+        self.bc[4][3] = (304, 382)
+        self.bc[4][4] = (394, 382);
+        self.bc[4][5] = (484, 382);
+        self.bc[4][6] = (574, 382);
+        self.bc[4][7] = (664, 382)
         """row 3 coordinates"""
-        self.bc[5][0] = (34, 470); self.bc[5][1] = (124, 470); self.bc[5][2] = (214, 470); self.bc[5][3] = (304, 470)
-        self.bc[5][4] = (394, 470); self.bc[5][5] = (484, 470); self.bc[5][6] = (574, 470); self.bc[5][7] = (664, 470)
+        self.bc[5][0] = (34, 470);
+        self.bc[5][1] = (124, 470);
+        self.bc[5][2] = (214, 470);
+        self.bc[5][3] = (304, 470)
+        self.bc[5][4] = (394, 470);
+        self.bc[5][5] = (484, 470);
+        self.bc[5][6] = (574, 470);
+        self.bc[5][7] = (664, 470)
         """row 2 coordinates"""
-        self.bc[6][0] = (34, 558); self.bc[6][1] = (124, 558); self.bc[6][2] = (214, 558); self.bc[6][3] = (304, 558)
-        self.bc[6][4] = (394, 558); self.bc[6][5] = (484, 558); self.bc[6][6] = (574, 558); self.bc[6][7] = (664, 558)
+        self.bc[6][0] = (34, 558);
+        self.bc[6][1] = (124, 558);
+        self.bc[6][2] = (214, 558);
+        self.bc[6][3] = (304, 558)
+        self.bc[6][4] = (394, 558);
+        self.bc[6][5] = (484, 558);
+        self.bc[6][6] = (574, 558);
+        self.bc[6][7] = (664, 558)
         """row 1 coordinates"""
-        self.bc[7][0] = (34, 646); self.bc[7][1] = (124, 646); self.bc[7][2] = (214, 646); self.bc[7][3] = (304, 646)
-        self.bc[7][4] = (394, 646); self.bc[7][5] = (484, 646); self.bc[7][6] = (574, 646); self.bc[7][7] = (664, 646)
+        self.bc[7][0] = (34, 646);
+        self.bc[7][1] = (124, 646);
+        self.bc[7][2] = (214, 646);
+        self.bc[7][3] = (304, 646)
+        self.bc[7][4] = (394, 646);
+        self.bc[7][5] = (484, 646);
+        self.bc[7][6] = (574, 646);
+        self.bc[7][7] = (664, 646)
         """mp = move_pieces"""
         self.mp = np.zeros([x, y], dtype=np.object)
         """row 8 coordinates"""
-        self.mp[0][0] = 'Rb1'; self.mp[0][1] = 'Ktb1'; self.mp[0][2] = 'Bb1'; self.mp[0][3] = 'Qb1'
-        self.mp[0][4] = 'Kb'; self.mp[0][5] = 'Bb2'; self.mp[0][6] = 'Ktb2'; self.mp[0][7] = 'Rb2'
+        self.mp[0][0] = 'Rb1';
+        self.mp[0][1] = 'Ktb1';
+        self.mp[0][2] = 'Bb1';
+        self.mp[0][3] = 'Qb1'
+        self.mp[0][4] = 'Kb';
+        self.mp[0][5] = 'Bb2';
+        self.mp[0][6] = 'Ktb2';
+        self.mp[0][7] = 'Rb2'
         """row 7 coordinates"""
-        self.mp[1][0] = 'Pb1'; self.mp[1][1] = 'Pb2'; self.mp[1][2] = 'Pb3'; self.mp[1][3] = 'Pb4'
-        self.mp[1][4] = 'Pb5'; self.mp[1][5] = 'Pb6'; self.mp[1][6] = 'Pb7'; self.mp[1][7] = 'Pb8'
+        self.mp[1][0] = 'Pb1';
+        self.mp[1][1] = 'Pb2';
+        self.mp[1][2] = 'Pb3';
+        self.mp[1][3] = 'Pb4'
+        self.mp[1][4] = 'Pb5';
+        self.mp[1][5] = 'Pb6';
+        self.mp[1][6] = 'Pb7';
+        self.mp[1][7] = 'Pb8'
         """row 6 coordinates"""
-        self.mp[2][0] = '   '; self.mp[2][1] = '   '; self.mp[2][2] = '   '; self.mp[2][3] = '   '
-        self.mp[2][4] = '   '; self.mp[2][5] = '   '; self.mp[2][6] = '   '; self.mp[2][7] = '   '
+        self.mp[2][0] = '   ';
+        self.mp[2][1] = '   ';
+        self.mp[2][2] = '   ';
+        self.mp[2][3] = '   '
+        self.mp[2][4] = '   ';
+        self.mp[2][5] = '   ';
+        self.mp[2][6] = '   ';
+        self.mp[2][7] = '   '
         """row 5 coordinates"""
-        self.mp[3][0] = '   '; self.mp[3][1] = '   '; self.mp[3][2] = '   '; self.mp[3][3] = '   '
-        self.mp[3][4] = '   '; self.mp[3][5] = '   '; self.mp[3][6] = '   '; self.mp[3][7] = '   '
+        self.mp[3][0] = '   ';
+        self.mp[3][1] = '   ';
+        self.mp[3][2] = '   ';
+        self.mp[3][3] = '   '
+        self.mp[3][4] = '   ';
+        self.mp[3][5] = '   ';
+        self.mp[3][6] = '   ';
+        self.mp[3][7] = '   '
         """row 4 coordinates"""
-        self.mp[4][0] = '   '; self.mp[4][1] = '   '; self.mp[4][2] = '   '; self.mp[4][3] = '   '
-        self.mp[4][4] = '   '; self.mp[4][5] = '   '; self.mp[4][6] = '   '; self.mp[4][7] = '   '
+        self.mp[4][0] = '   ';
+        self.mp[4][1] = '   ';
+        self.mp[4][2] = '   ';
+        self.mp[4][3] = '   '
+        self.mp[4][4] = '   ';
+        self.mp[4][5] = '   ';
+        self.mp[4][6] = '   ';
+        self.mp[4][7] = '   '
         """row 3 coordinates"""
-        self.mp[5][0] = '   '; self.mp[5][1] = '   '; self.mp[5][2] = '   '; self.mp[5][3] = '   '
-        self.mp[5][4] = '   '; self.mp[5][5] = '   '; self.mp[5][6] = '   '; self.mp[5][7] = '   '
+        self.mp[5][0] = '   ';
+        self.mp[5][1] = '   ';
+        self.mp[5][2] = '   ';
+        self.mp[5][3] = '   '
+        self.mp[5][4] = '   ';
+        self.mp[5][5] = '   ';
+        self.mp[5][6] = '   ';
+        self.mp[5][7] = '   '
         """row 2 coordinates"""
-        self.mp[6][0] = 'Pw1'; self.mp[6][1] = 'Pw2'; self.mp[6][2] = 'Pw3'; self.mp[6][3] = 'Pw4'
-        self.mp[6][4] = 'Pw5'; self.mp[6][5] = 'Pw6'; self.mp[6][6] = 'Pw7'; self.mp[6][7] = 'Pw8'
+        self.mp[6][0] = 'Pw1';
+        self.mp[6][1] = 'Pw2';
+        self.mp[6][2] = 'Pw3';
+        self.mp[6][3] = 'Pw4'
+        self.mp[6][4] = 'Pw5';
+        self.mp[6][5] = 'Pw6';
+        self.mp[6][6] = 'Pw7';
+        self.mp[6][7] = 'Pw8'
         """row 1 coordinates"""
-        self.mp[7][0] = 'Rw1'; self.mp[7][1] = 'Ktw1'; self.mp[7][2] = 'Bw1'; self.mp[7][3] = 'Qw1'
-        self.mp[7][4] = 'Kw'; self.mp[7][5] = 'Bw2'; self.mp[7][6] = 'Ktw2'; self.mp[7][7] = 'Rw2'
-        np.save('C:/Users/user/PycharmProjects/CHESS/Move_piece', self.mp)
+        self.mp[7][0] = 'Rw1';
+        self.mp[7][1] = 'Ktw1';
+        self.mp[7][2] = 'Bw1';
+        self.mp[7][3] = 'Qw1'
+        self.mp[7][4] = 'Kw';
+        self.mp[7][5] = 'Bw2';
+        self.mp[7][6] = 'Ktw2';
+        self.mp[7][7] = 'Rw2'
+        #np.save('C:/Users/user/PycharmProjects/CHESS/Move_piece', self.mp)
 
     def board(self):
         self.board_data()
         """frame off sets """
-        x1 = 90; x2 = 180; x3 = 270; x4 = 360; x5 = 450; x6 = 540; x7 = 630; y1 = 88
+        x1 = 90;
+        x2 = 180;
+        x3 = 270;
+        x4 = 360;
+        x5 = 450;
+        x6 = 540;
+        x7 = 630;
+        y1 = 88
         self.frame.create_rectangle(22, 22, 670, 670, fill='lime green')
         """row 8"""
         self.frame.create_rectangle(20, 17, 110, 105, fill='light yellow')
@@ -191,7 +297,8 @@ class ChessWorld:
         """BOARDER"""
         self.frame.create_line(22, 18, 740, 18, 740, 720, 22, 720, 22, 18, fill='black', width=5)
         """TEXT"""
-        d = 88; e = 90
+        d = 88;
+        e = 90
         self.frame.create_text(11, 64, text='8', font="Verdana 12 bold", fill='white')
         self.frame.create_text(11, 64 + d, text='7', font="Verdana 12 bold", fill='white')
         self.frame.create_text(11, 64 + 2 * d, text='6', font="Verdana 12 bold", fill='white')
@@ -275,7 +382,7 @@ class ChessWorld:
         self.img_pawn8_w = PhotoImage(file='C:/Users/user/PycharmProjects/CHESS/PIECES/pawn8_w.png')
         self.Pw8 = self.frame.create_image(self.bc[6][7], anchor=NW, image=self.img_pawn8_w)
 
-        #self.root.mainloop()
+        # self.root.mainloop()
 
     def white_pawn(self, i, j):
         self.white_move_vector = []
@@ -325,15 +432,15 @@ class ChessWorld:
             """check if Pw1 can move and if a black piece is in it's vector space"""
             if len(self.potential_white_board_vector) == 2 and self.j_white_index == 0:
                 if self.potential_white_board_vector[0] == '   ':
-                        self.white_move_vector.append(self.potential_coords_vector[0])
-                        self.white_board_vector.append(self.potential_white_board_vector[0])
+                    self.white_move_vector.append(self.potential_coords_vector[0])
+                    self.white_board_vector.append(self.potential_white_board_vector[0])
                 if self.potential_white_board_vector[1] != '   ':
-                        piece = list(self.potential_white_board_vector[1])
-                        print('BLACK PIECE', piece)
-                        for i in range(0, len(piece)):
-                            if piece[i] == 'b':
-                                self.white_move_vector.append(self.potential_coords_vector[1])
-                                self.white_board_vector.append(self.potential_white_board_vector[1])
+                    piece = list(self.potential_white_board_vector[1])
+                    print('BLACK PIECE', piece)
+                    for i in range(0, len(piece)):
+                        if piece[i] == 'b':
+                            self.white_move_vector.append(self.potential_coords_vector[1])
+                            self.white_board_vector.append(self.potential_white_board_vector[1])
                 """if Pw1 has no legal move GET NEW MOVE"""
                 if self.white_board_vector == []:
                     print('GET NEW WHITE MOVE')
@@ -347,8 +454,8 @@ class ChessWorld:
                             self.white_move_vector.append(self.potential_coords_vector[0])
                             self.white_board_vector.append(self.potential_white_board_vector[0])
                 if self.potential_white_board_vector[1] == '   ':
-                        self.white_move_vector.append(self.potential_coords_vector[1])
-                        self.white_board_vector.append(self.potential_white_board_vector[1])
+                    self.white_move_vector.append(self.potential_coords_vector[1])
+                    self.white_board_vector.append(self.potential_white_board_vector[1])
                 print(self.white_board_vector)
                 if self.white_board_vector == []:
                     print('GET NEW WHITE MOVE')
@@ -379,6 +486,7 @@ class ChessWorld:
                 if self.white_board_vector == []:
                     self.white_piece_vector()
         """Same as white"""
+
     def black_pawn(self, i, j):
         self.black_move_vector = []
         self.black_board_vector = []
@@ -419,8 +527,8 @@ class ChessWorld:
             if len(self.potential_black_board_vector) == 2 and self.j_black_index == 0:
                 print('LEN 2')
                 if self.potential_black_board_vector[0] == '   ':
-                        self.black_move_vector.append(self.potential_coords_vector[0])
-                        self.black_board_vector.append(self.potential_black_board_vector[0])
+                    self.black_move_vector.append(self.potential_coords_vector[0])
+                    self.black_board_vector.append(self.potential_black_board_vector[0])
                 if self.potential_black_board_vector[1] != '   ':
                     piece = list(self.potential_black_board_vector[1])
                     for i in range(0, len(piece)):
@@ -432,14 +540,14 @@ class ChessWorld:
             """check if Pb8"""
             if len(self.potential_black_board_vector) == 2 and self.j_black_index == 7:
                 if self.potential_black_board_vector[0] != '   ':
-                        piece = list(self.potential_black_board_vector[0])
-                        for i in range(0, len(piece)):
-                            if piece[i] == 'w':
-                                self.black_move_vector.append(self.potential_coords_vector[0])
-                                self.black_board_vector.append(self.potential_black_board_vector[0])
+                    piece = list(self.potential_black_board_vector[0])
+                    for i in range(0, len(piece)):
+                        if piece[i] == 'w':
+                            self.black_move_vector.append(self.potential_coords_vector[0])
+                            self.black_board_vector.append(self.potential_black_board_vector[0])
                 if self.potential_black_board_vector[1] == '   ':
-                        self.black_move_vector.append(self.potential_coords_vector[1])
-                        self.black_board_vector.append(self.potential_black_board_vector[1])
+                    self.black_move_vector.append(self.potential_coords_vector[1])
+                    self.black_board_vector.append(self.potential_black_board_vector[1])
                 if self.black_board_vector == []:
                     self.black_piece_vector()
             if len(self.potential_black_board_vector) == 3:
@@ -523,6 +631,7 @@ class ChessWorld:
                 self.white_board_vector.append(self.potential_white_board_vector[x])
         if self.white_board_vector == []:
             self.white_piece_vector()
+
     def black_knight(self, i, j):
         self.black_board_vector = []
         self.black_move_vector = []
@@ -583,7 +692,8 @@ class ChessWorld:
                 self.black_board_vector.append(self.potential_black_board_vector[x])
         if self.black_board_vector == []:
             self.black_piece_vector()
-    def white_bishop(self, i , j):
+
+    def white_bishop(self, i, j):
         self.white_move_vector = []
         self.white_board_vector = []
         potential_white_board_vector1 = []
@@ -2081,7 +2191,7 @@ class ChessWorld:
                 self.black_move_vector = new_potential_coords_vector8
 
     def white_pawn_promotion(self):
-        print('COORDS',self.random_piece_board_coords)
+        print('COORDS', self.random_piece_board_coords)
         self.white.append(self.cycle)
         for m in range(0, 8):
             for n in range(0, 8):
@@ -2104,22 +2214,22 @@ class ChessWorld:
         self.move_white_agent = []
         if len(self.white) == 1:
             self.img_queen_w2 = PhotoImage(file='C:/Users/user/PycharmProjects/CHESS/PIECES/queen_w2.png')
-            self.Qw2 = self.frame.create_image(self.bc[self.i_white_index-1][self.j_white_index], anchor=NW,
+            self.Qw2 = self.frame.create_image(self.bc[self.i_white_index - 1][self.j_white_index], anchor=NW,
                                                image=self.img_queen_w2)
             self.frame.update()
         elif len(self.white) == 2:
             self.img_queen_w3 = PhotoImage(file='C:/Users/user/PycharmProjects/CHESS/PIECES/queen_w3.png')
-            self.Qw3 = self.frame.create_image(self.bc[self.i_white_index-1][self.j_white_index], anchor=NW,
+            self.Qw3 = self.frame.create_image(self.bc[self.i_white_index - 1][self.j_white_index], anchor=NW,
                                                image=self.img_queen_w3)
             self.frame.update()
         elif len(self.white) == 3:
             self.img_queen_w4 = PhotoImage(file='C:/Users/user/PycharmProjects/CHESS/PIECES/queen_w4.png')
-            self.Qw4 = self.frame.create_image(self.bc[self.i_white_index-1][self.j_white_index], anchor=NW,
+            self.Qw4 = self.frame.create_image(self.bc[self.i_white_index - 1][self.j_white_index], anchor=NW,
                                                image=self.img_queen_w4)
             self.frame.update()
         else:
             self.img_queen_w5 = PhotoImage(file='C:/Users/user/PycharmProjects/CHESS/PIECES/queen_w5.png')
-            self.Qw5 = self.frame.create_image(self.bc[self.i_white_index-1][self.j_white_index], anchor=NW,
+            self.Qw5 = self.frame.create_image(self.bc[self.i_white_index - 1][self.j_white_index], anchor=NW,
                                                image=self.img_queen_w5)
             self.frame.update()
         print('CHOICE1', self.start_white_pieces[self.white_choice])
@@ -2184,22 +2294,22 @@ class ChessWorld:
         self.move_black_agent = []
         if len(self.black) == 1:
             self.img_queen_b2 = PhotoImage(file='C:/Users/user/PycharmProjects/CHESS/PIECES/queen_b2.png')
-            self.Qb2 = self.frame.create_image(self.bc[self.i_black_index+1][self.j_black_index], anchor=NW,
+            self.Qb2 = self.frame.create_image(self.bc[self.i_black_index + 1][self.j_black_index], anchor=NW,
                                                image=self.img_queen_b2)
             self.frame.update()
         elif len(self.black) == 2:
             self.img_queen_b3 = PhotoImage(file='C:/Users/user/PycharmProjects/CHESS/PIECES/queen_b3.png')
-            self.Qb3 = self.frame.create_image(self.bc[self.i_black_index+1][self.j_black_index], anchor=NW,
+            self.Qb3 = self.frame.create_image(self.bc[self.i_black_index + 1][self.j_black_index], anchor=NW,
                                                image=self.img_queen_b3)
             self.frame.update()
         elif len(self.black) == 3:
             self.img_queen_b4 = PhotoImage(file='C:/Users/user/PycharmProjects/CHESS/PIECES/queen_b4.png')
-            self.Qb4 = self.frame.create_image(self.bc[self.i_black_index+1][self.j_black_index], anchor=NW,
+            self.Qb4 = self.frame.create_image(self.bc[self.i_black_index + 1][self.j_black_index], anchor=NW,
                                                image=self.img_queen_b4)
             self.frame.update()
         else:
             self.img_queen_b5 = PhotoImage(file='C:/Users/user/PycharmProjects/CHESS/PIECES/queen_b5.png')
-            self.Qb5 = self.frame.create_image(self.bc[self.i_black_index+1][self.j_black_index], anchor=NW,
+            self.Qb5 = self.frame.create_image(self.bc[self.i_black_index + 1][self.j_black_index], anchor=NW,
                                                image=self.img_queen_b5)
             self.frame.update()
         print('CHOICE1', self.start_black_pieces[self.black_choice])
@@ -2240,8 +2350,9 @@ class ChessWorld:
 
     def white_piece_vector(self):
         print('WPV')
-        self.i_white_index = ()
-        self.j_white_index = ()
+        #self.i_white_index = ()
+        #self.j_white_index = ()
+        print('START PIECES', self.start_white_pieces)
         self.white_choice = np.random.randint(0, len(self.start_white_pieces))
         print('CHOICE', self.start_white_pieces)
         while True:
@@ -2258,6 +2369,7 @@ class ChessWorld:
                     self.i_white_index = i
                     self.j_white_index = j
                     print('white index', i, j)
+                    print('self i', self.i_white_index)
                     piece = list(self.start_white_pieces[self.white_choice])
                     print('WHITE PIECE', piece)
                     print('')
@@ -2388,6 +2500,7 @@ class ChessWorld:
             Rw2 = self.Rw2
             self.agent = Rw2
             print('MOVE Rw2')
+
     def black_board_label(self):
         print('BBL')
         if self.start_black_pieces[self.black_choice] == 'Pb1':
@@ -2470,6 +2583,7 @@ class ChessWorld:
             Rb2 = self.Rb2
             self.agent = Rb2
             print('MOVE Rb2')
+
     def black_graphic_board_label(self):
         if self.white_board_vector[self.move] == 'Pb1':
             Pb1 = self.Pb1
@@ -2531,6 +2645,7 @@ class ChessWorld:
         elif self.white_board_vector[self.move] == 'Rb2':
             Rb2 = self.Rb2
             self.agent = Rb2
+
     def white_graphic_board_label(self):
         if self.black_board_vector[self.move] == 'Pw1':
             Pw1 = self.Pw1
@@ -2642,7 +2757,7 @@ class ChessWorld:
         self.board_data()
         self.board()
         self.cycle = 0
-        for z in range(1, 250):
+        for z in range(1, 10):
             print('')
             print('NEXT MOVE')
             """Self.cycle is for use in further development stages """
@@ -2653,7 +2768,7 @@ class ChessWorld:
             self.white_board_label()
             print('AGENT', self.agent)
             """select random move"""
-            #self.move = ()
+            # self.move = ()
             self.move = np.random.randint(0, len(self.white_board_vector))
             """MOVE piece"""
             self.random_piece_board_coords = self.white_move_vector[self.move]
@@ -2665,7 +2780,7 @@ class ChessWorld:
             self.move_white_agent.append(one)
             """MOVE WHITE PIECE ON CHESS BOARD"""
             self.frame.move(self.agent, self.move_white_agent[0], self.move_white_agent[1])
-            time.sleep(0.05)
+            time.sleep(0.1)
             self.frame.update()
             self.move_white_agent = []
             """REMOVE BLACK PIECE"""
@@ -2698,7 +2813,7 @@ class ChessWorld:
                     print('INDEX IS 1 PROMOTION CALL')
                     self.white_pawn_promotion()
                     print('WHITE WINS HAVING QUEENED A PAWN')
-                    #break
+                    # break
             """MOVE BLACK PIECES"""
             self.black_piece_vector()
             self.black_board_label()
@@ -2715,7 +2830,7 @@ class ChessWorld:
             """MOVE BLACK PIECE ON CHESS BOARD"""
             self.frame.move(self.agent, self.move_black_agent[0], self.move_black_agent[1])
             self.move_black_agent = []
-            time.sleep(0.05)
+            time.sleep(0.1)
             self.frame.update()
             """REMOVE BLACK PIECE"""
             piece = list(self.black_board_vector[self.move])
@@ -2745,21 +2860,20 @@ class ChessWorld:
                     print('INDEX IS 1 PROMOTION CALL')
                     self.black_pawn_promotion()
                     print('BLACK WINS HAVING QUEENED A PAWN')
-                    #break
+                    # break
 
         self.root.mainloop()
 
 
 data = ChessWorld()
 
-#data.board()
+# data.board()
 # data.board_data()
-#data.white_piece_vector()
+# data.white_piece_vector()
 # data.black_piece_vector()
-#data.random_white_move()
+# data.random_white_move()
 data.move_random_piece()
 # data.white_board_label()
 # data.black_board_label()
-
 
 
